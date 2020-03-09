@@ -6,7 +6,6 @@ public class PublisherQuery extends Query
     public String listAll()
     {
         // SQL Query
-        System.out.println("Creating statement . . .");
         return "Select * From publishers";
     }
 

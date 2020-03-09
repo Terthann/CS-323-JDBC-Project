@@ -24,8 +24,6 @@ public class Menu
     // Get user choice.
     public int getChoice()
     {
-        System.out.println("Welcome!");
-        
         // List Menu Options.
         for (int i = 0; i < menuOptions.size(); i++)
             System.out.println((i + 1) + ") " + menuOptions.get(i));
