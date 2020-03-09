@@ -13,6 +13,6 @@ public class JDBCProject
     {
         // Testing Menu
         Menu myMenu = new Menu();
-        myMenu.start();
+        System.out.println(myMenu.getChoice());
     }
 }

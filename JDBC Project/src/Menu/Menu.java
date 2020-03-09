@@ -21,43 +21,51 @@ public class Menu
         addOptions();
     }
     
-    // Method to start the menu.
-    public void start()
+    // Get user choice.
+    public int getChoice()
     {
         System.out.println("Welcome!");
         
-        do
+        // List Menu Options.
+        for (int i = 0; i < menuOptions.size(); i++)
+            System.out.println((i + 1) + ") " + menuOptions.get(i));
+
+        // Ask for input.
+        System.out.print("Please select one: ");
+        // Check if input is an int.
+        if (in.hasNextInt())
+            choice = in.nextInt();
+        else
         {
-            // List Menu Options.
-            for (int i = 0; i < menuOptions.size(); i++)
-                System.out.println(menuOptions.get(i));
+            System.out.println("\nIncorrect input, please try again.\n");
+            // Resets the input.
+            in.next();
             
-            // Ask for input.
-            System.out.print("Please select one: ");
-            // Check if input is valid.
-            if (in.hasNextInt())
-                choice = in.nextInt();
-            else
-            {
-                System.out.println("\nIncorrect input, please try again.\n");
-                // Resets the input.
-                in.next();
-            }
-        } while (choice != 10);
+            choice = getChoice();
+        }
+        // Check if input is within range.
+        if (choice > 10 || choice < 1)
+        {
+            System.out.println("\nIncorrect input, please try again.\n");
+            
+            choice = getChoice();
+        }
+        
+        return choice;
     }
     
     // Menu Options
     private void addOptions()
     {
-        menuOptions.add("1) List Writing Groups");
-        menuOptions.add("2) List Writing Group Data");
-        menuOptions.add("3) List Publishers");
-        menuOptions.add("4) List Publisher Data");
-        menuOptions.add("5) List Book Titles");
-        menuOptions.add("6) List Book Data");
-        menuOptions.add("7) Insert Book");
-        menuOptions.add("8) Insert Publisher");
-        menuOptions.add("9) Remove Book");
-        menuOptions.add("10) Quit Menu");
+        menuOptions.add("List Writing Groups");
+        menuOptions.add("List Writing Group Data");
+        menuOptions.add("List Publishers");
+        menuOptions.add("List Publisher Data");
+        menuOptions.add("List Book Titles");
+        menuOptions.add("List Book Data");
+        menuOptions.add("Insert Book");
+        menuOptions.add("Insert Publisher");
+        menuOptions.add("Remove Book");
+        menuOptions.add("Quit Menu");
     }
 }
