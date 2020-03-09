@@ -1,6 +1,6 @@
 package Menu;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu
 {
@@ -8,12 +8,17 @@ public class Menu
     private String specified;
     private Scanner in;
     
+    private ArrayList<String> menuOptions;
+    
     // Constructor
     public Menu()
     {
         choice = 0;
         specified = null;
         in = new Scanner(System.in);
+        
+        menuOptions = new ArrayList<String>();
+        addOptions();
     }
     
     // Method to start the menu.
@@ -23,31 +28,9 @@ public class Menu
         
         do
         {
-            // List all writing groups.
-            System.out.println("1) List Writing Groups");
-            // List all data for a group specified by the user.
-                // Includes all data for the associated books and publishers.
-            System.out.println("2) List Writing Group Data");
-            // List all publishers.
-            System.out.println("3) List Publishers");
-            // List all data for a publisher specified by the user.
-                // Includes all data for the associated books and writing groups.
-            System.out.println("4) List Publisher Data");
-            // List all book titles.
-            System.out.println("5) List Book Titles");
-            // List all data for a single book specified by the user.
-                // Includes all data for the associated publisher and writing group.
-            System.out.println("6) List Book Data");
-            // Insert new book.
-            System.out.println("7) Insert Book");
-            // Insert new publisher and update books from a previous publisher to the new one.
-                // Add publisher first.
-                // Then update books.
-            System.out.println("8) Insert Publisher");
-            // Remove single book specified by the user.
-            System.out.println("9) Remove Book");
-            // Quit menu.
-            System.out.println("10) Quit Menu");
+            // List Menu Options.
+            for (int i = 0; i < menuOptions.size(); i++)
+                System.out.println(menuOptions.get(i));
             
             // Ask for input.
             System.out.print("Please select one: ");
@@ -61,5 +44,20 @@ public class Menu
                 in.next();
             }
         } while (choice != 10);
+    }
+    
+    // Menu Options
+    private void addOptions()
+    {
+        menuOptions.add("1) List Writing Groups");
+        menuOptions.add("2) List Writing Group Data");
+        menuOptions.add("3) List Publishers");
+        menuOptions.add("4) List Publisher Data");
+        menuOptions.add("5) List Book Titles");
+        menuOptions.add("6) List Book Data");
+        menuOptions.add("7) Insert Book");
+        menuOptions.add("8) Insert Publisher");
+        menuOptions.add("9) Remove Book");
+        menuOptions.add("10) Quit Menu");
     }
 }
