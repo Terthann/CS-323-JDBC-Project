@@ -1,11 +1,13 @@
 package Query;
 
 public class PublisherQuery extends Query
-{
+{   
     @Override
-    public void listAll()
+    public String listAll()
     {
-        // SQL Query Here
+        // SQL Query
+        System.out.println("Creating statement . . .");
+        return "Select * From publishers";
     }
 
     @Override

@@ -12,12 +12,38 @@ public class JDBCProject
     
     public static void main(String[] args)
     {
-        // Testing Menu
-        Menu myMenu = new Menu();
+        Connection connect = null;
         
-        QueryFactory factory = new QueryFactory();
-        int choice = myMenu.getChoice();
-        Query myQuery = factory.getQuery(choice);
-        
+        try
+        {
+            // Register JDBC driver.
+            Class.forName(JDBC_DRIVER);
+
+            // Open a connection.
+            System.out.println("Connecting to database...");
+            connect = DriverManager.getConnection(DB_URL);
+
+            // Testing Menu
+            Menu myMenu = new Menu();
+
+            QueryFactory factory = new QueryFactory();
+            int choice = myMenu.getChoice();
+            Query myQuery = factory.getQuery(choice);
+            
+            //STEP 6: Clean-up environment
+            //rs.close();
+            //stmt.close();
+            connect.close();
+        }
+        catch(SQLException se)
+        {
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }
+        catch(Exception e)
+        {
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }
     }
 }

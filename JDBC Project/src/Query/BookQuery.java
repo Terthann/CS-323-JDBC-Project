@@ -3,9 +3,11 @@ package Query;
 public class BookQuery extends Query
 {
     @Override
-    public void listAll()
+    public String listAll()
     {
-        // SQL Query Here
+        // SQL Query
+        System.out.println("Creating statement . . .");
+        return "Select * From books";
     }
 
     @Override
