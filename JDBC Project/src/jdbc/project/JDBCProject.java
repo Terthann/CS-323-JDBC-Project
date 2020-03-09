@@ -1,6 +1,7 @@
 package jdbc.project;
 
-import Menu.Menu;
+import Menu.*;
+import Query.*;
 import java.sql.*;
 
 public class JDBCProject
@@ -13,6 +14,10 @@ public class JDBCProject
     {
         // Testing Menu
         Menu myMenu = new Menu();
-        System.out.println(myMenu.getChoice());
+        
+        QueryFactory factory = new QueryFactory();
+        int choice = myMenu.getChoice();
+        Query myQuery = factory.getQuery(choice);
+        
     }
 }
