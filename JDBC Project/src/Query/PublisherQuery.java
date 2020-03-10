@@ -10,8 +10,9 @@ public class PublisherQuery extends Query
     }
 
     @Override
-    public void listData(String input)
+    public String listData()
     {
         // SQL Query Here
+        return "Select * From publishers";
     }
 }

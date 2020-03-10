@@ -52,6 +52,20 @@ public class Menu
         return choice;
     }
     
+    // Get user input.
+    public String getInput()
+    {
+        if (choice == 2)
+            System.out.print("Enter a Writing Group: ");
+        else if (choice == 4)
+            System.out.print("Enter a Publisher: ");
+        else if (choice == 6)
+            System.out.print("Enter a Book: ");
+        
+        in.nextLine();
+        return in.nextLine();
+    }
+    
     // Menu Options
     private void addOptions()
     {

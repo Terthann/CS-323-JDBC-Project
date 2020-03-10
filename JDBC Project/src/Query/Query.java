@@ -8,5 +8,5 @@ public abstract class Query
     
     // Abstract Methods
     public abstract String listAll();
-    public abstract void listData(String input);
+    public abstract String listData();
 }

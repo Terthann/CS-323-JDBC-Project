@@ -10,8 +10,11 @@ public class WritingGroupQuery extends Query
     }
 
     @Override
-    public void listData(String input)
+    public String listData()
     {
         // SQL Query Here
+        return "Select * From writingGroups " +
+               "Inner Join books Using (groupName) Inner Join publishers Using (publisherName) " +
+               "Where groupName = ?";
     }
 }

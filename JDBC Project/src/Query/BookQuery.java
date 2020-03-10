@@ -10,8 +10,9 @@ public class BookQuery extends Query
     }
 
     @Override
-    public void listData(String input)
+    public String listData()
     {
         // SQL QUery Here
+        return "Select * From books";
     }
 }

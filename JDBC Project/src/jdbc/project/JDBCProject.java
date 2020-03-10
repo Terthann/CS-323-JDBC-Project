@@ -58,6 +58,48 @@ public class JDBCProject
                         System.out.println("Subject: " + subject + "\n");
                     }
                 }
+                else if (choice == 2)
+                {
+                    String userInput = mainMenu.getInput();
+                    System.out.println("\nCreating statement...\n");
+                    PreparedStatement prepared = connect.prepareStatement(userQuery.listData());
+                    prepared.clearParameters();
+                    prepared.setString(1, userInput);
+                    result = prepared.executeQuery();
+                    
+                    while (result.next())
+                    {
+                        // Get row data.
+                        String head = result.getString("headWriter");
+                        int year = result.getInt("yearFormed");
+                        String subject = result.getString("subject");
+                        // Get row data.
+                        String address = result.getString("publisherAddress");
+                        String phone = result.getString("publisherPhone");
+                        String email = result.getString("publisherEmail");
+                        // Get row data.
+                        String groupName = result.getString("groupName");
+                        String title = result.getString("bookTitle");
+                        String pubName = result.getString("publisherName");
+                        int yearPub = result.getInt("yearPublished");
+                        int pages = result.getInt("numberPages");
+                        
+                        // Print data.
+                        System.out.println("Group Name: " + groupName);
+                        System.out.println("Head Writer: " + head);
+                        System.out.println("Year Formed: " + year);
+                        System.out.println("Subject: " + subject);
+                        // Print data.
+                        System.out.println("Publisher Name: " + pubName);
+                        System.out.println("Address: " + address);
+                        System.out.println("Phone #: " + phone);
+                        System.out.println("E-mail: " + email);
+                        // Print data.
+                        System.out.println("Book Title: " + title);
+                        System.out.println("Year Published: " + yearPub);
+                        System.out.println("Number of Pages: " + pages + "\n");
+                    }
+                }
                 else if (choice == 3)
                 {
                     System.out.println("\nCreating statement...\n");
@@ -105,9 +147,12 @@ public class JDBCProject
             } while (choice != 10);
             
             // Clean-up environment.
-            result.close();
-            state.close();
-            connect.close();
+            if (result != null)
+                result.close();
+            if (state != null)
+                state.close();
+            if (connect != null)
+                connect.close();
         }
         catch(SQLException se)
         {
