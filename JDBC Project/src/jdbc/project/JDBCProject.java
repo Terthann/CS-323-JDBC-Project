@@ -38,6 +38,7 @@ public class JDBCProject
                 // Create query based on input.
                 Query userQuery = factory.getQuery(choice);
                 
+                // List all writing groups.
                 if (choice == 1)
                 {
                     // Create statement.
@@ -58,6 +59,7 @@ public class JDBCProject
                         ((WritingGroupQuery) userQuery).printGroup(name, head, year, subject);
                     }
                 }
+                // List all data for specified writing group.
                 else if (choice == 2)
                 {
                     // Ask user for Writing Group.
@@ -102,10 +104,13 @@ public class JDBCProject
                     if (loopCounter == 0)
                         System.out.println("No group with that name.\n");
                 }
+                // List all publishers.
                 else if (choice == 3)
                 {
+                    // Create statement.
                     System.out.println("\nCreating statement...\n");
                     state = connect.createStatement();
+                    // Execute SQL.
                     result = state.executeQuery(userQuery.listAll());
                     
                     while (result.next())
@@ -120,18 +125,20 @@ public class JDBCProject
                         ((PublisherQuery) userQuery).printPublisher(name, address, phone, email);
                     }
                 }
+                // List all data for specified Publisher.
                 else if (choice == 4)
                 {
                     // ***
                     // *** NEEDS DOING ***
                     // ***
-                    // List all data for specified Publisher.
                 }
                 // List all books.
                 else if (choice == 5)
                 {
+                    // Create statement.
                     System.out.println("\nCreating statement...\n");
                     state = connect.createStatement();
+                    // Execute SQL.
                     result = state.executeQuery(userQuery.listAll());
                     
                     while (result.next())
