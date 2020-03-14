@@ -218,10 +218,20 @@ public class JDBCProject
                 }
                 else if (choice == 9)
                 {
-                    // ***
-                    // *** NEEDS DOING ***
-                    // ***
-                    // Remove specified book.
+                    // Ask user to enter Book's primary key.
+                    String userInput[] = mainMenu.getBookPK();
+                    // Create prepared statement.
+                    System.out.println("\nCreating statement...\n");
+                    PreparedStatement prepared = connect.prepareStatement(userQuery.removeBook());
+                    // Add user input to statement.
+                    prepared.clearParameters();
+                    prepared.setString(1, userInput[0]);
+                    prepared.setString(2, userInput[1]);
+                    prepared.setString(3, userInput[2]);
+                    // Execute SQL.
+                    prepared.executeUpdate();
+                    
+                    System.out.println("Removed " + userInput[1] + " from the Books table.\n");
                 }
             } while (choice != 10);
             
