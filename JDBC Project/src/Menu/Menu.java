@@ -69,6 +69,34 @@ public class Menu
         return in.nextLine();
     }
     
+    // When choice == 7, get Book values to insert into table.
+    public String[] getBookValues()
+    {
+        String[] bookValues = new String[5];
+        
+        System.out.print("Enter the Writing Group: ");
+        in.nextLine();
+        bookValues[0] = in.nextLine();
+        
+        System.out.print("Enter the Book Title: ");
+        //in.nextLine();
+        bookValues[1] = in.nextLine();
+        
+        System.out.print("Enter the Publisher Name: ");
+        //in.nextLine();
+        bookValues[2] = in.nextLine();
+        
+        System.out.print("Enter the Year Published: ");
+        //in.nextLine();
+        bookValues[3] = in.nextLine();
+        
+        System.out.print("Enter the Number of Pages: ");
+        //in.nextLine();
+        bookValues[4] = in.nextLine();
+        
+        return bookValues;
+    }
+    
     // Menu Options
     private void addOptions()
     {
