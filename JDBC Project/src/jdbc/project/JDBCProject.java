@@ -120,6 +120,13 @@ public class JDBCProject
                         ((PublisherQuery) userQuery).printPublisher(name, address, phone, email);
                     }
                 }
+                else if (choice == 4)
+                {
+                    // ***
+                    // *** NEEDS DOING ***
+                    // ***
+                    // List all data for specified Publisher.
+                }
                 else if (choice == 5)
                 {
                     System.out.println("\nCreating statement...\n");
@@ -138,6 +145,34 @@ public class JDBCProject
                         // Print data.
                         ((BookQuery) userQuery).printBook(groupName, title, pubName, year, pages);
                     }
+                }
+                else if (choice == 6)
+                {
+                    // ***
+                    // *** NEEDS DOING ***
+                    // ***
+                    // List all data for specified book.
+                }
+                else if (choice == 7)
+                {
+                    // ***
+                    // *** NEEDS DOING ***
+                    // ***
+                    // Insert new book.
+                }
+                else if (choice == 8)
+                {
+                    // ***
+                    // *** NEEDS DOING ***
+                    // ***
+                    // Insert new publisher.
+                }
+                else if (choice == 9)
+                {
+                    // ***
+                    // *** NEEDS DOING ***
+                    // ***
+                    // Remove specified book.
                 }
             } while (choice != 10);
             
