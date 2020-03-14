@@ -20,6 +20,14 @@ public class BookQuery extends Query
                "Where bookTitle = ? and (groupName = ? or publisherName = ?)";
     }
     
+    // Inserts new Book into the table.
+    public String insertBook()
+    {
+        // SQL Query
+        return "Insert Into books Values " +
+                "(?, ?, ?, ?, ?)";
+    }
+    
     // Prints a row from the Book table.
     public void printBook(String groupName, String title, String pubName, int year, int pages)
     {
