@@ -5,7 +5,6 @@ import java.util.*;
 public class Menu
 {
     private int choice;
-    private String specified;
     private Scanner in;
     
     private ArrayList<String> menuOptions;
@@ -14,7 +13,6 @@ public class Menu
     public Menu()
     {
         choice = 0;
-        specified = null;
         in = new Scanner(System.in);
         
         menuOptions = new ArrayList<String>();
@@ -60,9 +58,14 @@ public class Menu
         else if (choice == 4)
             System.out.print("Enter a Publisher: ");
         else if (choice == 6)
-            System.out.print("Enter a Book: ");
+            System.out.print("Enter a Book Title: ");
         
         in.nextLine();
+        return in.nextLine();
+    }
+    public String getSecondInput()
+    {
+        System.out.print("Enter the Writing Group OR Publisher: ");
         return in.nextLine();
     }
     

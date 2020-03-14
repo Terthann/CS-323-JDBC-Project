@@ -16,7 +16,7 @@ public class WritingGroupQuery extends Query
     {
         // SQL Query Here
         return "Select * From writingGroups " +
-               "Inner Join books Using (groupName) Inner Join publishers Using (publisherName) " +
+               "Natural Join books Natural Join publishers " +
                "Where groupName = ?";
     }
     

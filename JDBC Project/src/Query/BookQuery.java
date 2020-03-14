@@ -15,7 +15,9 @@ public class BookQuery extends Query
     public String listData()
     {
         // SQL Query Here
-        return "Select * From books";
+        return "Select * From books " +
+               "Natural Join writingGroups Natural Join publishers " +
+               "Where bookTitle = ? and (groupName = ? or publisherName = ?)";
     }
     
     // Prints a row from the Book table.

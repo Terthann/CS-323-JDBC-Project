@@ -100,7 +100,7 @@ public class JDBCProject
                     
                     // Check if the group exists.
                     if (loopCounter == 0)
-                        System.out.println("No group witht that name.\n");
+                        System.out.println("No group with that name.\n");
                 }
                 else if (choice == 3)
                 {
@@ -127,6 +127,7 @@ public class JDBCProject
                     // ***
                     // List all data for specified Publisher.
                 }
+                // List all books.
                 else if (choice == 5)
                 {
                     System.out.println("\nCreating statement...\n");
@@ -146,12 +147,53 @@ public class JDBCProject
                         ((BookQuery) userQuery).printBook(groupName, title, pubName, year, pages);
                     }
                 }
+                // List all data for specified book.
                 else if (choice == 6)
                 {
-                    // ***
-                    // *** NEEDS DOING ***
-                    // ***
-                    // List all data for specified book.
+                    // Ask user for Book Title.
+                    String titleInput = mainMenu.getInput();
+                    String secondInput = mainMenu.getSecondInput();
+                    // Create prepared statement.
+                    System.out.println("\nCreating statement...\n");
+                    PreparedStatement prepared = connect.prepareStatement(userQuery.listData());
+                    // Add user input to statement.
+                    prepared.clearParameters();
+                    prepared.setString(1, titleInput);
+                    prepared.setString(2, secondInput);
+                    prepared.setString(3, secondInput);
+                    // Execute SQL.
+                    result = prepared.executeQuery();
+                    
+                    // Used to check if the group exists.
+                    int loopCounter = 0;
+                    // Print each row of data.
+                    while (result.next())
+                    {
+                        // Get Writing Group data.
+                        String head = result.getString("headWriter");
+                        int year = result.getInt("yearFormed");
+                        String subject = result.getString("subject");
+                        // Get Publisher data.
+                        String address = result.getString("publisherAddress");
+                        String phone = result.getString("publisherPhone");
+                        String email = result.getString("publisherEmail");
+                        // Get Book data.
+                        String groupName = result.getString("groupName");
+                        String title = result.getString("bookTitle");
+                        String pubName = result.getString("publisherName");
+                        int yearPub = result.getInt("yearPublished");
+                        int pages = result.getInt("numberPages");
+                        
+                        // Print data.
+                        userQuery.printData(head, year, subject, address, phone, email, groupName, title, pubName, yearPub, pages);
+                        
+                        // Tracks number of rows.
+                        loopCounter++;
+                    }
+                    
+                    // Check if the group exists.
+                    if (loopCounter == 0)
+                        System.out.println("No book with that title, group, or publisher.\n");
                 }
                 else if (choice == 7)
                 {
