@@ -204,10 +204,22 @@ public class JDBCProject
                 }
                 else if (choice == 7)
                 {
-                    // ***
-                    // *** NEEDS DOING ***
-                    // ***
-                    // Insert new book.
+                    // Ask user to enter new Book values.
+                    String userInput[] = mainMenu.getBookValues();
+                    // Create prepared statement.
+                    System.out.println("\nCreating statement...\n");
+                    PreparedStatement prepared = connect.prepareStatement(userQuery.insertBook());
+                    // Add user input to statement.
+                    prepared.clearParameters();
+                    prepared.setString(1, userInput[0]);
+                    prepared.setString(2, userInput[1]);
+                    prepared.setString(3, userInput[2]);
+                    prepared.setString(4, userInput[3]);
+                    prepared.setString(5, userInput[4]);
+                    // Execute SQL.
+                    prepared.executeUpdate();
+                    
+                    System.out.println("Added " + userInput[1] + " to the Books table.\n");
                 }
                 else if (choice == 8)
                 {
