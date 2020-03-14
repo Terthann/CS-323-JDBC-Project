@@ -29,6 +29,7 @@ public class JDBCProject
             System.out.println("Connecting to database...");
             connect = DriverManager.getConnection(DB_URL);
             
+            // Start menu.
             System.out.println("Welcome!");
             do
             {
@@ -39,8 +40,10 @@ public class JDBCProject
                 
                 if (choice == 1)
                 {
+                    // Create statement.
                     System.out.println("\nCreating statement...\n");
                     state = connect.createStatement();
+                    // Execute SQL.
                     result = state.executeQuery(userQuery.listAll());
                     
                     while (result.next())
@@ -52,10 +55,7 @@ public class JDBCProject
                         String subject = result.getString("subject");
                         
                         // Print data.
-                        System.out.println("Group Name: " + name);
-                        System.out.println("Head Writer: " + head);
-                        System.out.println("Year Formed: " + year);
-                        System.out.println("Subject: " + subject + "\n");
+                        ((WritingGroupQuery) userQuery).printGroup(name, head, year, subject);
                     }
                 }
                 else if (choice == 2)
@@ -92,17 +92,7 @@ public class JDBCProject
                         int pages = result.getInt("numberPages");
                         
                         // Print data.
-                        System.out.println("Group Name: " + groupName);
-                        System.out.println("Head Writer: " + head);
-                        System.out.println("Year Formed: " + year);
-                        System.out.println("Subject: " + subject);
-                        System.out.println("Publisher Name: " + pubName);
-                        System.out.println("Address: " + address);
-                        System.out.println("Phone #: " + phone);
-                        System.out.println("E-mail: " + email);
-                        System.out.println("Book Title: " + title);
-                        System.out.println("Year Published: " + yearPub);
-                        System.out.println("Number of Pages: " + pages + "\n");
+                        userQuery.printData(head, year, subject, address, phone, email, groupName, title, pubName, yearPub, pages);
                         
                         // Tracks number of rows.
                         loopCounter++;
@@ -127,10 +117,7 @@ public class JDBCProject
                         String email = result.getString("publisherEmail");
                         
                         // Print data.
-                        System.out.println("Publisher Name: " + name);
-                        System.out.println("Address: " + address);
-                        System.out.println("Phone #: " + phone);
-                        System.out.println("E-mail: " + email + "\n");
+                        ((PublisherQuery) userQuery).printPublisher(name, address, phone, email);
                     }
                 }
                 else if (choice == 5)
@@ -149,11 +136,7 @@ public class JDBCProject
                         int pages = result.getInt("numberPages");
                         
                         // Print data.
-                        System.out.println("Group Name: " + groupName);
-                        System.out.println("Book Title: " + title);
-                        System.out.println("Publisher Name: " + pubName);
-                        System.out.println("Year Published: " + year);
-                        System.out.println("Number of Pages: " + pages + "\n");
+                        ((BookQuery) userQuery).printBook(groupName, title, pubName, year, pages);
                     }
                 }
             } while (choice != 10);
@@ -176,5 +159,26 @@ public class JDBCProject
             //Handle errors for Class.forName
             e.printStackTrace();
         }
+        finally
+        {
+            // Finally block used to close resources.
+            try
+            {
+                if(state != null)
+                    state.close();
+            }
+            catch(SQLException se2)
+            {} // Nothing we can do.
+            try
+            {
+                if(connect != null)
+                    connect.close();
+            }
+            catch(SQLException se)
+            {
+                se.printStackTrace();
+            }
+        }
+        System.out.println("Goodbye!");
     }
 }
