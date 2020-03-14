@@ -20,6 +20,16 @@ public class BookQuery extends Query
                "Where bookTitle = ? and (groupName = ? or publisherName = ?)";
     }
     
+    // Removes a Book from the table.
+    public String removeBook()
+    {
+        // SQL Query
+        return "Delete From books " +
+                "Where groupName = ? And " +
+                "bookTitle = ? And " +
+                "publisherName = ?";
+    }
+    
     // Prints a row from the Book table.
     public void printBook(String groupName, String title, String pubName, int year, int pages)
     {
