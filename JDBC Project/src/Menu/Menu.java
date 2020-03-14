@@ -63,6 +63,27 @@ public class Menu
         in.nextLine();
         return in.nextLine();
     }
+    
+    // When choice == 9, ask for the Book's primary key to delete from table.
+    public String[] getBookPK()
+    {
+        String[] bookPK = new String[3];
+        
+        System.out.print("Enter the Writing Group: ");
+        in.nextLine();
+        bookPK[0] = in.nextLine();
+        
+        System.out.print("Enter the Book Title: ");
+        //in.nextLine();
+        bookPK[1] = in.nextLine();
+        
+        System.out.print("Enter the Publisher Name: ");
+        //in.nextLine();
+        bookPK[2] = in.nextLine();
+        
+        return bookPK;
+    }
+    
     public String getSecondInput()
     {
         System.out.print("Enter the Writing Group OR Publisher: ");
