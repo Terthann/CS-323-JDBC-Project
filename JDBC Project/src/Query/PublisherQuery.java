@@ -15,7 +15,9 @@ public class PublisherQuery extends Query
     public String listData()
     {
         // SQL Query Here
-        return "Select * From publishers";
+        return "Select * From publishers " +
+                "Natural Join books Natural Join writingGroups " +
+                "Where publisherName = ?";
     }
     
     // Prints a row from the Publisher table.
