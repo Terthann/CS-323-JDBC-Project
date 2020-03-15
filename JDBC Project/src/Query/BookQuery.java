@@ -20,12 +20,23 @@ public class BookQuery extends Query
                "Where bookTitle = ? and (groupName = ? or publisherName = ?)";
     }
     
+
     // Inserts new Book into the table.
     public String insertBook()
     {
         // SQL Query
         return "Insert Into books Values " +
                 "(?, ?, ?, ?, ?)";
+
+    // Removes a Book from the table.
+    public String removeBook()
+    {
+        // SQL Query
+        return "Delete From books " +
+                "Where groupName = ? And " +
+                "bookTitle = ? And " +
+                "publisherName = ?";
+
     }
     
     // Prints a row from the Book table.
