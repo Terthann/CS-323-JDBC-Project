@@ -41,7 +41,7 @@ public class WritingGroupQuery extends Query
         // SQL Query
         return "Insert Into books Values " +
                 "(?, ?, ?, ?, ?)";
-
+    }
     // Removes a Book from the table.
     // NOTE: Not used by PublisherQuery or WritingGroupQuery
     // received "error: cannot find symbol" since userQuery isn't explicity declared as a BookQuery

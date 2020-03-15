@@ -27,7 +27,7 @@ public class BookQuery extends Query
         // SQL Query
         return "Insert Into books Values " +
                 "(?, ?, ?, ?, ?)";
-
+    }
     // Removes a Book from the table.
     public String removeBook()
     {
