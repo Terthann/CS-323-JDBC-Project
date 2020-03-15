@@ -15,7 +15,9 @@ public class PublisherQuery extends Query
     public String listData()
     {
         // SQL Query Here
-        return "Select * From publishers";
+        return "Select * From publishers " +
+                "Natural Join books Natural Join writingGroups " +
+                "Where publisherName = ?";
     }
     
     // Prints a row from the Publisher table.
@@ -27,6 +29,7 @@ public class PublisherQuery extends Query
         System.out.println("Phone #: " + phone);
         System.out.println("E-mail: " + email + "\n");
     }
+
     
 
     // Inserts new Book into the table.
@@ -53,4 +56,5 @@ public class PublisherQuery extends Query
                 "publisherName = ?";
 
     }
+
 }
