@@ -3,6 +3,7 @@ package jdbc.project;
 import Menu.*;
 import Query.*;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class JDBCProject
 {
@@ -168,7 +169,7 @@ public class JDBCProject
                     
                     // Check if the group exists.
                     if (loopCounter == 0)
-                        System.out.println("No group with that name.\n");
+                        System.out.println("No publisher with that name.\n");
                 }
                 // List all books.
                 else if (choice == 5)
@@ -254,9 +255,43 @@ public class JDBCProject
                     prepared.setString(3, userInput[2]);
                     prepared.setString(4, userInput[3]);
                     prepared.setString(5, userInput[4]);
-                    // Execute SQL.
+                    // Create a statement to check if the Writing Group exists.
+                    state = connect.createStatement();
+                    result = state.executeQuery("Select * From writingGroups");
+                    ArrayList<String> groups = new ArrayList<String>();
+                    while (result.next())
+                    {
+                        groups.add(result.getString("groupName"));
+                    }
+                    // If the group does not exist, add it to the table.
+                    if (!groups.contains(userInput[0]))
+                    {
+                        PreparedStatement addGroup = connect.prepareStatement("Insert Into writingGroups (groupName) Values (?)");
+                        addGroup.clearParameters();
+                        addGroup.setString(1, userInput[0]);
+                        addGroup.executeUpdate();
+                        System.out.println("Added " + userInput[0] + " to Writing Groups.");
+                    }
+                    // Create a statement to check if the Publisher exists.
+                    state = connect.createStatement();
+                    result = state.executeQuery("Select * From publishers");
+                    ArrayList<String> publishers = new ArrayList<String>();
+                    while (result.next())
+                    {
+                        publishers.add(result.getString("publisherName"));
+                    }
+                    // If the publisher does not exist, add it to the table.
+                    if (!publishers.contains(userInput[2]))
+                    {
+                        PreparedStatement addPublisher = connect.prepareStatement("Insert Into publishers (publisherName) Values (?)");
+                        addPublisher.clearParameters();
+                        addPublisher.setString(1, userInput[2]);
+                        addPublisher.executeUpdate();
+                        System.out.println("Added " + userInput[2] + " to Publishers.");
+                    }
+                    // Execute SQL to add the book.
                     prepared.executeUpdate();
-                    
+                    // Inform the user it was added.
                     System.out.println("Added " + userInput[1] + " to the Books table.\n");
                 }
                 else if (choice == 8)

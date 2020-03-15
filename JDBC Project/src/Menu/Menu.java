@@ -94,26 +94,65 @@ public class Menu
     public String[] getBookValues()
     {
         String[] bookValues = new String[5];
+        int year = 0;
+        int pages = 0;
+        boolean notValid = true;
         
         System.out.print("Enter the Writing Group: ");
         in.nextLine();
         bookValues[0] = in.nextLine();
         
         System.out.print("Enter the Book Title: ");
-        //in.nextLine();
         bookValues[1] = in.nextLine();
         
         System.out.print("Enter the Publisher Name: ");
-        //in.nextLine();
         bookValues[2] = in.nextLine();
         
-        System.out.print("Enter the Year Published: ");
-        //in.nextLine();
-        bookValues[3] = in.nextLine();
+        // Loop until valid input.
+        do
+        {
+            // Prompt user for number of pages.
+            System.out.print("Enter the Year Published: ");
+            // Check if user input is valid.
+            if (in.hasNextInt())
+            {
+                year = in.nextInt();
+                notValid = false;
+            }
+            // If not, prompt again.
+            else
+            {
+                System.out.println("\nIncorrect input, please try again.\n");
+                // Resets the input.
+                in.next();
+            }
+        } while (notValid);
+        // Convert valid input to string and add to array.
+        bookValues[3] = Integer.toString(year);
         
-        System.out.print("Enter the Number of Pages: ");
-        //in.nextLine();
-        bookValues[4] = in.nextLine();
+        // Reset notValid.
+        notValid = true;
+        // Loop until valid input.
+        do
+        {
+            // Prompt user for number of pages.
+            System.out.print("Enter the Number of Pages: ");
+            // Check if user input is valid.
+            if (in.hasNextInt())
+            {
+                pages = in.nextInt();
+                notValid = false;
+            }
+            // If not, prompt again.
+            else
+            {
+                System.out.println("\nIncorrect input, please try again.\n");
+                // Resets the input.
+                in.next();
+            }
+        } while (notValid);
+        // Convert valid input to string and add to array.
+        bookValues[4] = Integer.toString(pages);
         
         return bookValues;
     }

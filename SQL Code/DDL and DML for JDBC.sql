@@ -2,10 +2,10 @@
 
 Create Table writingGroups
 (
-    groupName Varchar(25) Not Null,
-    headWriter Varchar(25),
+    groupName Varchar(50) Not Null,
+    headWriter Varchar(50),
     yearFormed Int,
-    subject Varchar(25),
+    subject Varchar(100),
 
     Constraint writingGroup_pk
     Primary Key (groupName)
@@ -13,10 +13,10 @@ Create Table writingGroups
 
 Create Table publishers
 (
-    publisherName Varchar(25) Not Null,
+    publisherName Varchar(50) Not Null,
     publisherAddress Varchar(50),
-    publisherPhone Varchar(15),
-    publisherEmail Varchar(25),
+    publisherPhone Varchar(20),
+    publisherEmail Varchar(50),
 
     Constraint publisher_pk
     Primary Key (publisherName)
@@ -24,9 +24,9 @@ Create Table publishers
 
 Create Table books
 (
-    groupName Varchar(25) Not Null,
-    bookTitle Varchar(25) Not Null,
-    publisherName Varchar(25) Not Null,
+    groupName Varchar(50) Not Null,
+    bookTitle Varchar(100) Not Null,
+    publisherName Varchar(50) Not Null,
     yearPublished Int,
     numberPages Int,
 
