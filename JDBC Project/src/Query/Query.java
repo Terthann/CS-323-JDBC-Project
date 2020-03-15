@@ -9,11 +9,6 @@ public abstract class Query
     // Abstract Methods
     public abstract String listAll();
     public abstract String listData();
-
-    public abstract String insertBook(); // Only used by BookQuery.
-
-    public abstract String removeBook(); // Only used by BookQuery.
-
     
     public void printData(String head, int year, String subject,
                           String address, String phone, String email,

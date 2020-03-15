@@ -29,30 +29,4 @@ public class WritingGroupQuery extends Query
         System.out.println("Year Formed: " + year);
         System.out.println("Subject: " + subject + "\n");
     }
-    
-
-    // Inserts new Book into the table.
-    // NOTE: Not used by PublisherQuery or WritingGroupQuery
-    // received "error: cannot find symbol" since userQuery isn't explicity declared as a BookQuery
-    // fixed by implementing method into abstract class and its subclasses.
-    @Override
-    public String insertBook()
-    {
-        // SQL Query
-        return "Insert Into books Values " +
-                "(?, ?, ?, ?, ?)";
-    }
-    // Removes a Book from the table.
-    // NOTE: Not used by PublisherQuery or WritingGroupQuery
-    // received "error: cannot find symbol" since userQuery isn't explicity declared as a BookQuery
-    // fixed by implementing method into abstract class and its subclasses.
-    public String removeBook()
-    {
-        // SQL Query
-        return "Delete From books " +
-                "Where groupName = ? And " +
-                "bookTitle = ? And " +
-                "publisherName = ?";
-
-    }
 }

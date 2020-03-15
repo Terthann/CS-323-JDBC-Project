@@ -247,7 +247,7 @@ public class JDBCProject
                     String userInput[] = mainMenu.getBookValues();
                     // Create prepared statement.
                     System.out.println("\nCreating statement...\n");
-                    PreparedStatement prepared = connect.prepareStatement(userQuery.insertBook());
+                    PreparedStatement prepared = connect.prepareStatement(((BookQuery)userQuery).insertBook());
                     // Add user input to statement.
                     prepared.clearParameters();
                     prepared.setString(1, userInput[0]);
@@ -307,7 +307,7 @@ public class JDBCProject
                     String userInput[] = mainMenu.getBookPK();
                     // Create prepared statement.
                     System.out.println("\nCreating statement...\n");
-                    PreparedStatement prepared = connect.prepareStatement(userQuery.removeBook());
+                    PreparedStatement prepared = connect.prepareStatement(((BookQuery)userQuery).removeBook());
                     // Add user input to statement.
                     prepared.clearParameters();
                     prepared.setString(1, userInput[0]);
