@@ -157,6 +157,35 @@ public class Menu
         return bookValues;
     }
     
+    // When choice == 8, get Publisher values to insert into the table.
+    public String[] getPublisherValues()
+    {
+        String[] publisherValues = new String[4];
+        
+        System.out.print("Enter the Publisher Name: ");
+        in.nextLine();
+        publisherValues[0] = in.nextLine();
+        
+        System.out.print("Enter the Publisher Address: ");
+        publisherValues[1] = in.nextLine();
+        
+        System.out.print("Enter the Publisher Phone: ");
+        publisherValues[2] = in.nextLine();
+        
+        System.out.print("Enter the Publisher Email: ");
+        publisherValues[3] = in.nextLine();
+        
+        return publisherValues;
+    }
+    
+    // When choice == 8 (and after the new Publisher has been added), 
+    // ask for the Publisher to be bought out.
+    public String updatePublisher(String newPublisher)
+    {
+        System.out.print("Enter the Publisher to be bought out by " + newPublisher + ": ");
+        return in.nextLine();
+    }
+    
     // Menu Options
     private void addOptions()
     {
