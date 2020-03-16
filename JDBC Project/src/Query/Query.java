@@ -1,5 +1,6 @@
 package Query;
 
+// Created by Andrew Lucas & Giovanni Salas.
 public abstract class Query
 {
     // Variables

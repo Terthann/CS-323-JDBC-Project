@@ -1,5 +1,6 @@
 package Query;
 
+// Created by Andrew Lucas & Giovanni Salas.
 public class QueryFactory
 {
     public Query getQuery(int choice)

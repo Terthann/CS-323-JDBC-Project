@@ -1,3 +1,5 @@
+-- Created by Andrew Lucas & Giovanni Salas
+
 -- DDL to create the Database.
 
 Create Table writingGroups
@@ -45,7 +47,7 @@ Create Table books
     Unique (bookTitle, publisherName)
 );
 
--- Test DML to populate the tables.
+-- DML to populate the tables.
 
 Insert Into writingGroups
 (groupName, headWriter, yearFormed, subject)

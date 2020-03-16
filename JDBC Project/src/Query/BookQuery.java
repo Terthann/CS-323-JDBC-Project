@@ -1,5 +1,6 @@
 package Query;
 
+// Created by Andrew Lucas & Giovanni Salas.
 public class BookQuery extends Query
 {
     // Lists all Books in the table.

@@ -1,5 +1,6 @@
 package Query;
 
+// Created by Andrew Lucas & Giovanni Salas.
 public class PublisherQuery extends Query
 {   
     // Lists all Publishers in the table.

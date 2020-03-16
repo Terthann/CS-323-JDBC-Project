@@ -1,5 +1,6 @@
 package Query;
 
+// Created by Andrew Lucas & Giovanni Salas.
 public class WritingGroupQuery extends Query
 {
     // Lists all Writing Groups in the table.

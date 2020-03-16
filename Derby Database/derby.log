@@ -1,7 +1,7 @@
-Sun Mar 15 22:49:57 PDT 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+Mon Mar 16 13:40:22 PDT 2020 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Sun Mar 15 22:50:03 PDT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0170-e1e4-423a-ffffb540fbf1 
+Mon Mar 16 13:40:28 PDT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0170-e513-7664-ffffb540fbf1 
 on database directory C:\Users\Andrew\Documents\GitHub\CS-323-JDBC-Project\Derby Database\JDBCProject with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44 
 Loaded from file:/C:/Users/Andrew/Desktop/Other%20Programs/Installers/db-derby-10.14.2.0-lib/db-derby-10.14.2.0-lib/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -12,9 +12,3 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Andrew\Documents\GitHub\CS-323-JDBC-Project\Derby Database
 Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Sun Mar 15 22:52:15 PDT 2020: Shutting down Derby engine
-----------------------------------------------------------------
-Sun Mar 15 22:52:15 PDT 2020:
-Shutting down instance a816c00e-0170-e1e4-423a-ffffb540fbf1 on database directory C:\Users\Andrew\Documents\GitHub\CS-323-JDBC-Project\Derby Database\JDBCProject with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44 
-----------------------------------------------------------------
