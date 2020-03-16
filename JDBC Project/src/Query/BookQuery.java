@@ -26,7 +26,7 @@ public class BookQuery extends Query
     public String insertBook()
     {
         // SQL Query
-        return "Insert Into books Values " +
+        return "Insert Into books (groupName,bookTitle,publisherName,yearPublished,numberPages) Values " +
                 "(?, ?, ?, ?, ?)";
     }
     // Removes a Book from the table.

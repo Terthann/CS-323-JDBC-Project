@@ -25,7 +25,7 @@ public class PublisherQuery extends Query
     public String insertPublisher()
     {
         // SQL Query
-        return "Insert Into publishers Values " +
+        return "Insert Into publishers (publisherName,publisherAddress,publisherPhone,publisherEmail) Values " +
                 "(?, ?, ?, ?)";
     }
     
