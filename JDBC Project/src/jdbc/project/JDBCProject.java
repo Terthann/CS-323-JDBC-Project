@@ -328,35 +328,59 @@ public class JDBCProject
                 // Insert a new publisher.
                 else if (choice == 8)
                 {
-                    // Ask user to enter new Publisher's details.
+                    // Prompt user for new Publisher's details.
                     String userInput[] = mainMenu.getPublisherValues();
-                    // Create prepared statement.
-                    System.out.println("\nCreating statement...\n");
-                    PreparedStatement prepared = connect.prepareStatement(((PublisherQuery)userQuery).insertPublisher());
-                    // Add user input to statement.
-                    prepared.clearParameters();
-                    prepared.setString(1, userInput[0]);
-                    prepared.setString(2, userInput[1]);
-                    prepared.setString(3, userInput[2]);
-                    prepared.setString(4, userInput[3]);
-                    // Execute SQL to add the Publisher.
-                    prepared.executeUpdate();
-                    // Inform the user it was added.
-                    System.out.println("Added " + userInput[0] + " to the Publishers table.\n");
-                    
-                    // Update Publisher.
-                    String oldPublisher = mainMenu.updatePublisher(userInput[0]);
-                    // Create prepared statement.
-                    System.out.println("\nCreating statement...\n");
-                    prepared = connect.prepareStatement(((PublisherQuery)userQuery).updatePublisher());
-                    // Add user input to statement.
-                    prepared.clearParameters();
-                    prepared.setString(1, userInput[0]);
-                    prepared.setString(2, oldPublisher);
-                    // Execute SQL to add the Publisher.
-                    prepared.executeUpdate();
-                    // Inform the user of the acquisition.
-                    System.out.println(oldPublisher + " has been acquired by " + userInput[0] + ".\n");
+                    // Create a statement to check if the Publisher exists.
+                    System.out.println("\nChecking for duplicate entry...");
+                    state = connect.createStatement();
+                    result = state.executeQuery("Select * From publishers");
+                    boolean duplicate = false;
+                    while (result.next())
+                    {
+                        String publish = result.getString("publisherName");
+                        if (publish.equals(userInput[0]))
+                            duplicate = true;
+                    }
+                    if (duplicate)
+                    {
+                        System.out.println("That publisher already exists.");
+                    }
+                    else
+                    {
+                        System.out.println("No duplicate found.");
+                        // Create prepared statement.
+                        System.out.println("\nCreating statement...");
+                        PreparedStatement prepared = connect.prepareStatement(((PublisherQuery)userQuery).insertPublisher());
+                        // Add user input to statement.
+                        prepared.clearParameters();
+                        prepared.setString(1, userInput[0]);
+                        prepared.setString(2, userInput[1]);
+                        prepared.setString(3, userInput[2]);
+                        prepared.setString(4, userInput[3]);
+                        // Execute SQL to add the Publisher.
+                        prepared.executeUpdate();
+                        // Inform the user it was added.
+                        System.out.println("Added " + userInput[0] + " to the Publishers table.\n");
+
+                        // Update Publisher.
+                        String oldPublisher = mainMenu.updatePublisher(userInput[0]);
+                        // Create prepared statement.
+                        System.out.println("Creating statement...");
+                        prepared = connect.prepareStatement(((PublisherQuery)userQuery).updatePublisher());
+                        // Add user input to statement.
+                        prepared.clearParameters();
+                        prepared.setString(1, userInput[0]);
+                        prepared.setString(2, oldPublisher);
+                        // Execute SQL to add the Publisher.
+                        int rowsUpdated = prepared.executeUpdate();
+                        if (rowsUpdated > 0)
+                        {
+                            // Inform the user of the acquisition.
+                            System.out.println(oldPublisher + " has been acquired by " + userInput[0] + ". " + rowsUpdated + " books updated.\n");
+                        }
+                        else
+                            System.out.println(oldPublisher + " has no books or does not exist. No books updated.\n");
+                    }
                 }
                 // Remove a single book.
                 else if (choice == 9)

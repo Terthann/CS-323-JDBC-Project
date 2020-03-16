@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Andrew\Documents\GitHub\CS-323-JDBC-Project\Derby Database
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Mar 16 15:26:54 PDT 2020: Shutting down Derby engine
+----------------------------------------------------------------
+Mon Mar 16 15:26:54 PDT 2020:
+Shutting down instance a816c00e-0170-e513-7664-ffffb540fbf1 on database directory C:\Users\Andrew\Documents\GitHub\CS-323-JDBC-Project\Derby Database\JDBCProject with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44 
+----------------------------------------------------------------
