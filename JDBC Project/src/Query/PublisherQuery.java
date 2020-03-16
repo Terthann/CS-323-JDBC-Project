@@ -20,6 +20,22 @@ public class PublisherQuery extends Query
                 "Where publisherName = ?";
     }
     
+    // Inserts a new Publisher into the table.
+    public String insertPublisher()
+    {
+        // SQL Query
+        return "Insert Into publishers Values " +
+                "(?, ?, ?, ?)";
+    }
+    
+    // Replaces one Publisher with another.
+    public String updatePublisher()
+    {
+        // SQL Query
+        return "Update books " +
+                "Set publisherName = ? Where publisherName = ?";
+    }
+    
     // Prints a row from the Publisher table.
     public void printPublisher(String name, String address, String phone, String email)
     {
