@@ -296,10 +296,35 @@ public class JDBCProject
                 }
                 else if (choice == 8)
                 {
-                    // ***
-                    // *** NEEDS DOING ***
-                    // ***
-                    // Insert new publisher.
+                    // Ask user to enter new Publisher's details.
+                    String userInput[] = mainMenu.getPublisherValues();
+                    // Create prepared statement.
+                    System.out.println("\nCreating statement...\n");
+                    PreparedStatement prepared = connect.prepareStatement(((PublisherQuery)userQuery).insertPublisher());
+                    // Add user input to statement.
+                    prepared.clearParameters();
+                    prepared.setString(1, userInput[0]);
+                    prepared.setString(2, userInput[1]);
+                    prepared.setString(3, userInput[2]);
+                    prepared.setString(4, userInput[3]);
+                    // Execute SQL to add the Publisher.
+                    prepared.executeUpdate();
+                    // Inform the user it was added.
+                    System.out.println("Added " + userInput[0] + " to the Publishers table.\n");
+                    
+                    // Update Publisher.
+                    String oldPublisher = mainMenu.updatePublisher(userInput[0]);
+                    // Create prepared statement.
+                    System.out.println("\nCreating statement...\n");
+                    prepared = connect.prepareStatement(((PublisherQuery)userQuery).updatePublisher());
+                    // Add user input to statement.
+                    prepared.clearParameters();
+                    prepared.setString(1, userInput[0]);
+                    prepared.setString(2, oldPublisher);
+                    // Execute SQL to add the Publisher.
+                    prepared.executeUpdate();
+                    // Inform the user of the acquisition.
+                    System.out.println(oldPublisher + " has been acquired by " + userInput[0] + ".\n");
                 }
                 else if (choice == 9)
                 {
